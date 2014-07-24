@@ -1,0 +1,12 @@
+<h1>{{ user.name }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'user:clock' user.id %}" method="post">
+{% csrf_token %}
+{% for punch in user.clock_set.all %}
+<!--<iniput type="text" name="words" id="words{{forloop.counter}}" value="{{words.id}}">-->
+  <li>{{punch.clock_date}}</li>
+{% endfor %}
+<input type="submit" value="clock" />
+</form>
