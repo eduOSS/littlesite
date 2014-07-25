@@ -40,7 +40,8 @@ def clock(request,users_id):
         c_pre = get_object_or_404(Clock,id=p.log_num-1,user_id=users_id)
         #how about c_pre = p.clock_set.get(id=p.log_num-1,user_id=users_id)?
     else:
-        c_pre = p.clock_set.create(clock_date=p.regi_date,clock_text="init",id=1,user_id=users_id)
+        #c_pre = p.clock_set.create(clock_date=p.regi_date,clock_text="init",id=1,user_id=users_id)
+        c_pre = Clock(user_id=users_id,clock_date=p.regi_date,id=1,clock_text="init")
         c_pre.save()
 
     if timezone.now() - c_pre.clock_date >= datetime.timedelta(seconds = 10):

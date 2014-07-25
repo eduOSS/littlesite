@@ -6,6 +6,9 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
+<ul>
+  <li> here is your clock logs</li>
+</ul>
 <form action="{% url 'user:clock' user.id %}" method="post">
 {% csrf_token %}
 {% for punch in user.clock_set.all %}
