@@ -3,18 +3,21 @@ from django.contrib import admin
 # Register your models here.
 from user.models import User,Clock
 
-class ChoiceInline(admin.TabularInline):
+class ClockInline(admin.TabularInline):
     model = Clock
     extra = 3
 
-class PunchAdmin(admin.ModelAdmin):
+class UserAdmin(admin.ModelAdmin):
     fieldsets=[
             (None, {'fields':['name']}),
-            ('Date information', {'fields':['regi_date'],'classes':['collapse']}),
+            ('Register information', {'fields':['regi_date'],'classes':['collapse']}),
+            ('Log times', {'fields':['log_num'],'classes':['collapse']}),
+            ('Coins', {'fields':['coins'],'classes':['collapse']}),
+
             ]
-    inlines = [ChoiceInline]
-    list_display = ('name','regi_date','was_clocked_recently')
+    inlines = [ClockInline]
+    list_display = ('name','regi_date','log_num','coins')
     list_filter = ['regi_date']
     search_fields = ['name']
-admin.site.register(User)
+admin.site.register(User,UserAdmin)
 

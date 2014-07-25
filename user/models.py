@@ -8,7 +8,7 @@ class User(models.Model):
     name = models.CharField(max_length=200)
     regi_date = models.DateTimeField('registration time')
     coins = models.IntegerField(default=0)
-    log_num = models.IntegerField(default=0)
+    log_num = models.IntegerField(default=1)
 
     def __unicode__(self):
         return self.name
@@ -16,7 +16,7 @@ class User(models.Model):
 class Clock(models.Model):
     user = models.ForeignKey(User)
     clock_text = models.CharField(max_length=200)
-    clock_date = models.DateTimeField(auto_now=True)
+    clock_date = models.DateTimeField(auto_now=False)
 
     def __unicode__(self):
         return self.clock_text
