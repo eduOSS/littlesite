@@ -6,9 +6,14 @@ import datetime
 
 class User(models.Model):
     name = models.CharField(max_length=200)
+    level = models.IntegerField(default=1)
     regi_date = models.DateTimeField('registration time')
     coins = models.IntegerField(default=0)
     log_num = models.IntegerField(default=1)
+    a = models.IntegerField(default=1)
+    b = models.IntegerField(default=2)
+    c = models.IntegerField(default=4)
+    d = models.IntegerField(default=6)
 
     def __unicode__(self):
         return self.name
